@@ -1,0 +1,29 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Post } from '../models/post';
+
+@Injectable({ providedIn: 'root' })
+export class PostsService {
+  private readonly url = 'https://jsonplaceholder.typicode.com/posts';
+
+  constructor(private http: HttpClient) { }
+
+  getAll(): Observable<Post[]> {
+    return this.http.get<Post[]>(this.url);
+  }
+
+  getById(id: number) {
+    return this.http.get<Post>(`${this.url}/${id}`);
+    //sería equivalente a esto:
+    //https://jsonplaceholder.typicode.com/posts/6
+  }
+
+  delete(id: number) {
+    return this.http.delete<void>(`${this.url}/${id}`);
+  }
+
+  create(post: Post) {
+    this.http.post<Post>(this.url, post);
+  }
+}
