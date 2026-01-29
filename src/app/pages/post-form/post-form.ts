@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-post-form',
-  imports: [FormControl, FormGroup, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './post-form.html',
   styleUrl: './post-form.css',
 })
